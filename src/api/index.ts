@@ -20,3 +20,10 @@ export const fetchRoleData = () => {
         method: 'get'
     });
 };
+export const runHp = (data) => {
+    return request({
+        url: 'web/run',
+        method: 'post',
+        data
+    });
+};

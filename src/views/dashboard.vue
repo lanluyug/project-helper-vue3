@@ -23,6 +23,7 @@
   import { javascript } from "@codemirror/lang-javascript";
   import { java } from "@codemirror/lang-java";
   import { oneDark } from "@codemirror/theme-one-dark";
+  import axios from 'axios';
   const code = ref(`console.log('Hello, world!');console.log('Hello, world!');`);
   const extensions = [java(), oneDark];
   const handleClick = (type: string) => {
@@ -30,6 +31,15 @@
   };
   const run = () =>{
     console.log(code);
+    let param = {id: 1, text: code.value};
+    axios.post('/api/web/run', param)
+      .then(response => {
+        console.log(response.data)
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    
   }
   </script>
   <style>
