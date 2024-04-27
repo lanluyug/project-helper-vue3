@@ -24,31 +24,31 @@ const routes: RouteRecordRaw[] = [
                 component: () => import(/* webpackChunkName: "dashboard" */ '../views/dashboard.vue'),
             },
             {
-                path: '/system-user',
-                name: 'system-user',
+                path: '/editor',
+                name: 'editor',
                 meta: {
-                    title: '用户管理',
-                    permiss: '11',
+                    title: '富文本编辑器',
+                    noAuth: true,
                 },
-                component: () => import(/* webpackChunkName: "system-user" */ '../views/system/user.vue'),
+                component: () => import(/* webpackChunkName: "system-user" */ '../views/pages/editor.vue'),
             },
             {
-                path: '/system-role',
-                name: 'system-role',
+                path: '/markdown',
+                name: 'markdown',
                 meta: {
-                    title: '角色管理',
-                    permiss: '12',
+                    title: 'markdown编辑器',
+                    noAuth: true,
                 },
-                component: () => import(/* webpackChunkName: "system-role" */ '../views/system/role.vue'),
+                component: () => import(/* webpackChunkName: "system-role" */ '../views/pages/markdown.vue'),
             },
             {
                 path: '/system-menu',
                 name: 'system-menu',
                 meta: {
-                    title: '菜单管理',
+                    title: '自定义',
                     permiss: '13',
                 },
-                component: () => import(/* webpackChunkName: "system-menu" */ '../views/system/menu.vue'),
+                component: () => import(/* webpackChunkName: "system-menu" */ '../views/dashboard.vue'),
             },
             {
                 path: '/table',
@@ -276,14 +276,15 @@ router.beforeEach((to, from, next) => {
     const role = localStorage.getItem('vuems_name');
     const permiss = usePermissStore();
 
-    if (!role && to.meta.noAuth !== true) {
-        next('/login');
-    } else if (typeof to.meta.permiss == 'string' && !permiss.key.includes(to.meta.permiss)) {
-        // 如果没有权限，则进入403
-        next('/403');
-    } else {
-        next();
-    }
+    // if (!role && to.meta.noAuth !== true) {
+    //     next('/login');
+    // } else if (typeof to.meta.permiss == 'string' && !permiss.key.includes(to.meta.permiss)) {
+    //     // 如果没有权限，则进入403
+    //     next('/403');
+    // } else {
+    //     next();
+    // }
+    next();
 });
 
 router.afterEach(() => {

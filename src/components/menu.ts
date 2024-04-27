@@ -9,27 +9,27 @@ export const menuData: Menus[] = [
     },
     {
         id: '1',
-        title: '系统管理',
+        title: '代码处理',
         index: '1',
         icon: 'HomeFilled',
         children: [
             {
                 id: '11',
                 pid: '1',
-                index: '/system-user',
-                title: '用户管理',
+                index: '/editor',
+                title: '富文本编辑器',
             },
             {
                 id: '12',
                 pid: '1',
-                index: '/system-role',
-                title: '角色管理',
+                index: '/markdown',
+                title: 'markdown编辑器',
             },
             {
                 id: '13',
                 pid: '1',
                 index: '/system-menu',
-                title: '菜单管理',
+                title: '自定义',
             },
         ],
     },

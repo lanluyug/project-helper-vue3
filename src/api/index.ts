@@ -22,7 +22,7 @@ export const fetchRoleData = () => {
 };
 export const runHp = (data) => {
     return request({
-        url: 'web/run',
+        url: '/api/web/run',
         method: 'post',
         data
     });
