@@ -63,7 +63,6 @@ declare module '@vue/runtime-core' {
     ElTour: typeof import('element-plus/es')['ElTour']
     ElTourStep: typeof import('element-plus/es')['ElTourStep']
     ElTransfer: typeof import('element-plus/es')['ElTransfer']
-    ElTreeSelect: typeof import('element-plus/es')['ElTreeSelect']
     ElUpload: typeof import('element-plus/es')['ElUpload']
     ElWatermark: typeof import('element-plus/es')['ElWatermark']
     Header: typeof import('./src/components/header.vue')['default']

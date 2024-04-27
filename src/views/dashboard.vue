@@ -116,7 +116,7 @@
   }
   .console {
     margin-top: 10px;
-    width: 100%;
+    width: calc(100% - 20px);
     height: 300px;
     padding-top: 20px;
     padding-left: 20px;
