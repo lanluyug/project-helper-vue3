@@ -37,7 +37,7 @@ export default defineConfig({
 		// hmr: { overlay: false }, // 关闭热更新错误提示
 		proxy: { // 代理配置
 		  '/api': {
-			target: 'http://192.168.168.11:8737',
+			target: 'http://localhost:8737',
 			changeOrigin: true,
 			secure: false,
 			rewrite: (path) => path.replace('^/api', '')

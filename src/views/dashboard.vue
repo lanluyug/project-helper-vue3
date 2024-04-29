@@ -31,10 +31,10 @@
     </div>
     <div class="notice">{{ optionDesc }}</div>
     <div class="console">
-      {{ result }}
       <el-button plain class="copy-button"
-          @click="handleCopy"
-        v-copy="result">复制</el-button>
+                 @click="handleCopy"
+                 v-copy="result">复制</el-button>
+      {{ result }}
     </div>
   </template>
 <script setup lang="ts" name="dashboard">
