@@ -82,10 +82,7 @@
       }
     });
   }
-  const shadow= {
-    name: 'Dark Shadow',
-    type: 'dark',
-  }
+  const exportList = [6]
   const run = () =>{
     if(choiseValue.value === ''){
       ElMessage.warning(`请选择运行模式！`);
@@ -96,6 +93,31 @@
       return
     }
     let param = {id: choiseValue.value, text: code.value};
+    if(exportList.includes(Number(choiseValue.value))){
+      axios({
+        method: 'POST',
+        url: 'api/web/export',
+        // 设置 header 参数, 可以添加token
+        // headers: {
+        //   'Access-Control-Expose-Headers': 'Content-Disposition'
+        // },
+        responseType: 'arraybuffer', // 一定要设置响应类型，否则不能正确处理响应的数据
+        data: param
+      }).then(function (res) {
+        let blob = new Blob([res.data], {
+             type: 'application/pdf;charset=utf-8'
+        })
+        let downloadElement = document.createElement('a')
+        let href = window.URL.createObjectURL(blob) // 创建下载的链接
+        downloadElement.href = href
+        downloadElement.download = res.headers["content-disposition"].split('filename=')[1] // 下载后文件名
+        document.body.appendChild(downloadElement)
+        downloadElement.click() // 点击下载
+        document.body.removeChild(downloadElement) // 下载完成移除元素
+        window.URL.revokeObjectURL(href) // 释放blob对象
+      })
+      return;
+    }
     axios.post('/api/web/run', param)
       .then(response => {
         result.value = response.data.data.result
